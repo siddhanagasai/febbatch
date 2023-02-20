@@ -48,3 +48,13 @@
    48  ll
    49  git status
    50  history
+   
+   =====================
+   remove the spaces and deltes
+:g/^\s*$/d
+
+^ begining of a line
+\s one whitespaces
+* zero or more
+\s* zero or more whitespaces
+$ the end of a line
