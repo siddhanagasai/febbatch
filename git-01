@@ -48,7 +48,7 @@
    48  ll
    49  git status
    50  history
-   
+   51  yum list installed | wc -l : To see number of installed pacakges in linux
    =====================
    remove the spaces and deltes
 :g/^\s*$/d
