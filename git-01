@@ -49,7 +49,8 @@
    49  git status
    50  history
    51  yum list installed | wc -l : To see number of installed pacakges in linux
-   =====================
+   
+   =============================================================================================================================================
    remove the spaces and deltes
 :g/^\s*$/d
 
@@ -58,3 +59,19 @@
 * zero or more
 \s* zero or more whitespaces
 $ the end of a line
+
+====================================================================================================================================================================
+ 73  cd bookmyshow/
+   74  ll
+   75  mkdir abcd
+   76  cd abcd/
+   77  ll
+   78  vim raham.txt
+   79  pwd
+   80  ll
+   81  cd
+   82  ln -s /root/bookmyshow/abcd/raham.txt raham.txt
+   83  ll
+   84  cat raham.txt
+   85  histroy
+   86  history
