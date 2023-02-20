@@ -1,0 +1,50 @@
+1  mkdir bookmyshow
+    2  cd bookmyshow/
+    3  yum install git -y
+    4  git --version
+    5  ls -al
+    6  git init
+    7  pwd
+    8  ll
+    9  ls -al
+   10  touch file1
+   11  git add file1
+   12  git status
+   13  git commit -m "commit-1" file1
+   14  git status
+   15  ll
+   16  git log
+   17  ll
+   18  touch file{2..5}
+   19  git status
+   20  git add *
+   21  git status
+   22  git commit -m "commit-2" *
+   23  git status
+   24  git log
+   25  git log --oneline
+   26  git log
+   27  git config user.name "raham"
+   28  git config user.email "rahamshaik@gmail.com"
+   29  touch file6
+   30  git add file6
+   31  git commit -m "commit-3" file6
+   32  git log
+   33  git show 91ef2a38ece6cb5fd3773332c596678e81e2f622
+   34  ll
+   35  touch abc.txt
+   36  git status
+   37  ll
+   38  touch def.txt
+   39  git status
+   40  vim .gitignore
+   41  git status
+   42  ll
+   43  touch java{1..10}.txt
+   44  ll
+   45  git status
+   46  vim .gitignore
+   47  git status
+   48  ll
+   49  git status
+   50  history
