@@ -1,0 +1,110 @@
+ 1  mkdir swiggy
+    2  cd swiggy/
+    3  yum install git -y
+    4  git init
+    5  ll
+    6  git branch -m branch-1
+    7  vim file1
+    8  git add file1
+    9  git commit -m "commit-1" file1
+   10  git branch
+   11  git checkout -b branch-2
+   12  ll
+   13  vim file1
+   14  git add file1
+   15  git commit -m "commit-2" file1
+   16  cat file1
+   17  git checkout branch-1
+   18  cat file1
+   19  vim file1
+   20  git add file1
+   21  git commit -m "commit-3" file1
+   22  git checkout branch-2
+   23  cat file1
+   24  git checkout branch-1
+   25  cat file1
+   26  git merge branch-2
+   27  git diff file1
+   28  vim file1
+   29  git add file1
+   30  git commit -m "commit-4"
+   31  git status
+   32  cat file1
+   33  cd
+   34  ll
+   35  mkdir raham
+   36  cd raham/
+   37  git init
+   38  git branch -m branch-1
+   39  vim index.html
+   40  git add index.html
+   41  git commit -m "abc" index.html
+   42  git checkout -b branch-2
+   43  ll
+   44  rm -f index.html
+   45  vim swiggy.java
+   46  git add swiggy.java
+   47  vim swiggy.java
+   48  git add swiggy.java
+   49  git status
+   50  ll
+   51  git stash
+   52  ll
+   53  touch swiggy1.java
+   54  git add swiggy1.java
+   55  ll
+   56  git stash
+   57  ll
+   58  git stash list
+   59  ll
+   60  git stash apply
+   61  ll
+   62  git stash list
+   63  git stash apply
+   64  ll
+   65  git stash list
+   66  git stash apply c318147
+   67  ll
+   68  touch swiggy2.java
+   69  ll
+   70  git add swiggy2.java
+   71  git status
+   72  git statsh
+   73  git stash
+   74  git stash apply
+   75  ll
+   76  cd
+   77  mkdir xyz
+   78  cd xyz/
+   79  git init
+   80  ll
+   81  touch abc
+   82  git add abc
+   83  git stash
+   84  git commit -m "c-1" abc
+   85  git log
+   86  ll
+   87  touch java1
+   88  git add java1
+   89  git stash
+   90  ll
+   91  touch java2
+   92  git add java2
+   93  ll
+   94  git stash
+   95  ll
+   96  git stash apply
+   97  ll
+   98  git stash
+   99  git stash list
+  100  git stash pop
+  101  git stash list
+  102  git stash clear
+  103  git stash list
+  104  ll
+  105  git status
+  106  cd
+  107  git tag
+  108  cd swiggy/
+  109  git tag
+  110  history
