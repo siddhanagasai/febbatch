@@ -1,0 +1,46 @@
+ 1  wget https://dlcdn.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+    2  ll
+    3  tar -zxvf apache-maven-3.6.3-bin.tar.gz
+    4  ll
+    5  cd apache-maven-3.6.3/
+    6  ll
+    7  yum install java-1.8.0-openjdk -y
+    8  java -version
+    9  yum install maven -y
+   10  mvn --version
+   11  mvn archetype:generate
+   12  ll
+   13  cd paytm
+   14  ll
+   15  yum install tree -y
+   16  tree
+   17  cat src/main/java/devops/App.java
+   18  tree
+   19  cat src/test/java/devops/AppTest.java
+   20  mvn compile
+   21  tree
+   22  mvn test
+   23  tree
+   24  mvn package
+   25  tree
+   26  mvn install
+   27  cd /root/.m2/repository/ccit/paytm/1.0-SNAPSHOT
+   28  ll
+   29  mvn clean
+   30  ll
+   31  cd -
+   32  ll
+   33  mvn clean
+   34  ll
+   35  mvn install
+   36  ll
+   37  mvn clean
+   38  mvn compile
+   39  mvn test
+   40  mvn package
+   41  mvn install
+   42  ll
+   43  mvn clean
+   44  ll
+   45  vim pom.xml
+   46  history
