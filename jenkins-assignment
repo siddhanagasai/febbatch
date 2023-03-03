@@ -1,0 +1,54 @@
+MASTER & SLAVE:
+EXECUTE THE BELOW COMMANDS ON ALL SERVERS:
+
+1. amazon-linux-extras install java-openjdk11 -y
+2. useradd jenkins
+3. passwd jenkins
+4. visudo 	: 100 th line
+5. vim /etc/ssh/sshd_config   : 63 rd line  (no=yes)
+6. systemctl restart sshd
+7. systemctl status sshd
+8. hostnamectl set-hostname name
+9. su - jenkins
+10. hostname -i
+ 
+
+=====================================================
+CONNECTING TO JENKINS SLAVES:
+
+9. ssh-keygen
+10. ssh-copy-id jenkins@172.31.63.151
+11. ssh 'jenkins@172.31.63.151'
+12. ctrl + d
+13. ssh-copy-id jenkins@172.31.51.183
+14. ssh 'jenkins@172.31.51.183'
+15. ctrl + d
+
+=====================================================
+
+create 1 master 3 slaves & create 3 jobs:
+
+job-1: (slave-1) (free style)
+integration of git 
+op: /tmp/user-1/builds/ 
+parameters: choice parameters (client, env)
+vars: build number, job name, jenkins url, commit id
+
+job-2: (slave-2) (free style)
+create files/linux commnads/ (lscpu:file1, lsmem:file2 userlist: file3 move to dir1)
+op: /tmp/user-2/builds/
+vars: build number, job name, jenkins url
+
+job-3: (slave-3) (pipeline)
+integration of git 
+op: /tmp/user-3/builds/
+parameters: choice parameters (client, env)
+vars: build number, job name, jenkins url, commit id
+
+
+conditions:
+
+job-1 -- > job2 & job3 automatic run
+dont give manual build
+
+
