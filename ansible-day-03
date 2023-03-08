@@ -1,4 +1,110 @@
-107  mkdir playbooks
+ 1  hostname -i
+    2  ssh-keygen
+    3  ssh-copy-id ansible@172.31.14.202
+    4  sudo hostnamectl set-hostname mainserver
+    5  ssh 'ansible@172.31.14.202'
+    6  ssh-copy-id ansible@172.31.5.56
+    7  ssh 'ansible@172.31.5.56
+    8  ssh-copy-id ansible@172.31.4.163
+    9  ssh 'ansible@172.31.4.163'
+   10  ssh-copy-id ansible@172.31.11.160
+   11  ssh 'ansible@172.31.11.160'
+   12  ansible all --list-hosts
+   13  ansible dev --list-hosts
+   14  ansible test --list-hosts
+   15  ansible all --list-hosts
+   16  ansible all[0] --list-hosts
+   17  ansible all[1] --list-hosts
+   18  ansible all[2] --list-hosts
+   19  ansible all[-1] --list-hosts
+   20  ansible all[-2] --list-hosts
+   21  ansible all --list-hosts
+   22  ansible all[1:3] --list-hosts
+   23  cat /etc/ansible/hosts
+   24  ansible all -a "ls"
+   25  ansible all -a "touch file1"
+   26  ansible all -a "ls"
+   27  ansible all -a "mkdir dir1"
+   28  ansible all -a "ls"
+   29  ansible all -a "useradd devops"
+   30  ansible all -a "sudo useradd devops"
+   31  ansible all -a "cat /etc/passwd"
+   32  ansible all -b -a "yum install git -y"
+   33  ansible all -b -a "git --version"
+   34  ansible all -b -a "yum remove git -y"
+   35  ansible all -b -m yum -a "pkg=git state=present"
+   36  ansible all -b -a "git --version"
+   37  ansible all -b -m yum -a "pkg=httpd state=present"
+   38  ansible all -b -m yum -a "pkg=httpd state=absent"
+   39  ansible all -b -m yum -a "pkg=httpd state=present"
+   40  ansible all -b -m yum -a "pkg=httpd state=latest"
+   41  ansible all -b -m yum -a "pkg=httpd state=started"
+   42  ansible all -b -m yum -a "name=httpd state=started"
+   43  ansible all -b -m service -a "name=httpd state=started"
+   44  ll
+   45  ansible all -b -m user -a "name=siraj"
+   46  vim raham.txt
+   47  cat raham.txt
+   48  ansible all -b -m copy -a "src=raham.txt dest=/tmp"
+   49  ansible all -a "ls"
+   50  ansible all -a "ls /tmp"
+   51  history
+   52  ll
+   53  rm -rf *
+   54  vim raham.yml
+   55  cat raham.yml
+   56  ansible all -ba "yum remove git -y"
+   57  ll
+   58  ansible-playbook raham.yml
+   59  cat raham.yml
+   60  vim raham.yml
+   61  cat raham.yml
+   62  ansible-playbook raham.yml --extra-vars "a=docker"
+   63  ansible-playbook raham.yml --extra-vars "a=maven"
+   64  cat raham.yml
+   65  vim raham.yml
+   66  ansible all -ba "yum remove docker git -y"
+   67  cat raham.yml
+   68  ansible-playbook raham.yml "a=git, b=docker"
+   69  ansible-playbook raham.yml "a=git b=docker"
+   70  ansible-playbook raham.yml --extra-vars "a=git b=docker"
+   71  ansible all -ba "yum remove docker git -y"
+   72  vim raham.yml
+   73  ansible-playbook raham.yml --extra-vars "a=git b=docker"
+   74  vim raham.yml
+   75  ansible all -ba "yum remove docker git -y"
+   76  vim raham.yml
+   77  cat raham.yml
+   78  ansible-playbook raham.yml
+   79  cat raham.yml
+   80  vim raham.yml
+   81  ansible all -ba "yum remove docker git tree maven -y"
+   82  cat raham.yml
+   83  ansible-playbook raham.yml
+   84  ansible all -ba "git --version"
+   85  ansible all -ba "maven -version"
+   86  ansible all -ba "docker -version"
+   87  ansible all -ba "docker --version"
+   88  ansible all -ba "java -version"
+   89  cat raham.yml
+   90  ansible all -ba "tree --version"
+   91  vim raham.yml
+   92  ansible all -ba "cat /etc/passwd"
+   93  ansible-playbook raham.yml
+   94  ansible all -ba "cat /etc/passwd"
+   95  vim raham.yml
+   96  ansible all -ba "yum remove git maven tree docker java-1.8.0-openjdk httpd -y"
+   97  ansible-playbook raham.yml
+   98  ansible all -ba "systemctl status httpd"
+   99  cat raham.yml
+  100  cat /etc/ansible/hosts
+  101  cat raham.yml
+  102  vim raham.yml
+  103  ansible-playbook raham.yml
+  104  ll
+  105  vim raham.yml
+  106  rm -rf *
+  107  mkdir playbooks
   108  cd playbooks/
   109  mkdir roles
   110  touch master.yml
