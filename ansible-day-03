@@ -1,0 +1,101 @@
+107  mkdir playbooks
+  108  cd playbooks/
+  109  mkdir roles
+  110  touch master.yml
+  111  vim master.yml
+  112  tree
+  113  sudo yum install tree -y
+  114  tre
+  115  tree
+  116  mkdir roles/role1/
+  117  mkdir roles/role1/tasks
+  118  tree
+  119  vim roles/role1/tasks/main.yml
+  120  tree
+  121  vim master.yml
+  122  cat master.yml
+  123  ansible-playbook master.yml
+  124  tree
+  125  mkdir roles/role2/
+  126  mkdir roles/role2/tasks
+  127  vim roles/role2/tasks/main.yml
+  128  tree
+  129  vim master.yml
+  130  ansible-playbook master.yml
+  131  cat roles/
+  132  cat master.yml
+  133  tree
+  134  cd
+  135  ll
+  136  rm -rf *
+  137  vim raham.yml
+  138  ansible-playbook raham.yml
+  139  cat raham.yml
+  140  ansible all -ba "yum remove httpd docker git -y"
+  141  ll
+  142  vim abc.yml
+  143  cat abc.yml
+  144  vim abc.yml
+  145  cat abc.yml
+  146  ansible-playbook abc.yml --tags a,b
+  147  cat abc.yml
+  148  ansible-playbook abc.yml --tags d
+  149  ansible -m setup 3.231.151.78
+  150  ansible -m setup 172.31.14.202
+  151  ansible all -ba "yum remove docker java-1.8.0-openjdk git -y"
+  152  ll
+  153  cat raham.yml
+  154  cat abc.yml
+  155  ansible-playbook abc.yml --skip-tags "c"
+  156  cat raham.yml
+  157  cat abc.yml
+  158  vim abc.yml
+  159  cat abc.yml
+  160  vim abc.yml
+  161  ll
+  162  cat abc.yml
+  163  ansible-vault create creds
+  164  cat creds
+  165  ansible-vault edit creds
+  166  cat creds
+  167  ansible-vault rekey creds
+  168  cat creds
+  169  ansible-vault decrypt creds
+  170  cat creds
+  171  ansible-vault encrypt creds
+  172  cat creds
+  173  ansible-vault view creds
+  174  cat creds
+  175  ll
+  176  cat raham.yml
+  177  ansible-vault encrypt raham.yml
+  178  ll
+  179  cat raham.yml
+  180  ansible-playbook raham.yml
+  181  ansible-playbook decrypt raham.yml
+  182  ansible-vault decrypt raham.yml
+  183  ps
+  184  kill -9 4665
+  185  kill -9 4665ps
+  186  ps
+  187  cd /home/
+  188  ll
+  189  sudo useradd raham
+  190  ll
+  191  cd
+  192  ll
+  193  rm -rf *
+  194  ll
+  195  ansible-galaxy init raham
+  196  ll
+  197  tree
+  198  cat raham/handlers/main.yml
+  199  rm -rf *
+  200  ansible-galaxy search java
+  201  ansible-galaxy search elasticsearch
+  202  ansible-galaxy init alikins.elasticsearch
+  203  ll
+  204  tree
+  205  mazer install alikins.top_geerlingguy
+  206  ansible-galaxy collection install alikins.collection_inspect
+  207  history
