@@ -1,0 +1,20 @@
+ 1  yum install docker -y
+    2  docker --version
+    3  docker version
+    4  systemctl start docker.service
+    5  systemctl status docker.service
+    6  docker version
+    7  docker images
+    8  docker pull ubuntu
+    9  docker images
+   10  docker run ubuntu
+   11  docker ps -a
+   12  docker run --name raham ubuntu
+   13  docker ps -a
+   14  docker run -it --name raham ubuntu
+   15  docker run -it --name radika ubuntu
+   16  docker ps -a
+   17  docker commit radika img1
+   18  docker images
+   19  docker run -it --name radika2 img1
+   20  history
