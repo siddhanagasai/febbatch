@@ -2,14 +2,15 @@ MASTER & SLAVE:
 EXECUTE THE BELOW COMMANDS ON ALL SERVERS:
 
 1. amazon-linux-extras install java-openjdk11 -y
-2. useradd jenkins
-3. passwd jenkins
-4. visudo 	: 100 th line
-5. vim /etc/ssh/sshd_config   : 63 rd line  (no=yes)
+2. useradd jenkins   //jenkins user is added
+3. passwd jenkins  //giving/configuring new passwd
+4. visudo 	: 100 th line    // add new user as " jenkins ALL=(ALL)  NOPASSWD: ALL" to allow user to execute any command without password
+5. vim /etc/ssh/sshd_config   : 63 rd line  (no=yes)    //this file is background service related file. updating 63rd line from no to yes is to allow for any command to ask pwd only frst time not afterwards. 
 6. systemctl restart sshd
 7. systemctl status sshd
 8. hostnamectl set-hostname name
-9. su - jenkins
+9. su - jenkins 
+10. sudo -i  //optional
 10. hostname -i
  
 
