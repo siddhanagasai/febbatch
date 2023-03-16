@@ -1,0 +1,75 @@
+ 1  yum install docker -y
+    2  sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    3  sudo chmod +x /usr/local/bin/docker-compose
+    4  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+    5  docker-compose --version
+    6  systemcctl start docker
+    7  systemctl start docker
+    8  systemctl status docker
+    9  vim docker-compose.yml
+   10  vim Dockerfile
+   11  vim index.html
+   12  docker build -t paytrain:v1 .
+   13  vim index.html
+   14  docker build -t paymovie:v1 .
+   15  vim index.html
+   16  docker build -t paycric:v1 .
+   17  docker images
+   18  vim docker-compose.yml
+   19  cat docker-compose.yml
+   20  docker ps -a
+   21  docker-compose up -d
+   22  vim docker-compose.yml
+   23  docker-compose up -d
+   24  docker ps -a
+   25  vim docker-compose.yml
+   26  cat docker-compose.yml
+   27  docker-compose up -d
+   28  docker image
+   29  docker images
+   30  vim docker-compose.yml
+   31  docker-compose up -d
+   32  docker ps -a
+   33  docker-compose up -d --scale=5
+   34  docker-compose up -d train --scale=5
+   35  docker-compose train --scale=5
+   36  docker-compose scale
+   37  docker-compose --scale
+   38  docker-compose --scale help
+   39  docker-compose scale movie=2
+   40  docker ps -a
+   41  docker-compose logs
+   42  docker-compose images
+   43  docker-compose ps
+   44    sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+   45    sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+   46
+   47  amazon-linux-extras install java-openjdk11 -y
+   48  yum install git jenkins -y
+   49  systemctl start jenkins
+   50  systemctl status jenkins
+   51  vim /lib/systemd/system/docker.service
+   52  systemctl daemon-reload
+   53  service docker restart
+   54  chmod 777 /var/run/docker.sock
+   55  docker ps -a
+   56  ll
+   57  docker-compose up -d
+   58  docker ps -a
+   59  docker-compose ps
+   60  docker-compose stop
+   61  docker-compose kill
+   62  docker-compose ps -a
+   63  ll
+   64  mv docker-compose.yml docker-compose1.yml
+   65  ll
+   66  docker-compose up -d
+   67  docker-compose -f docker-compose1.yml up -d
+   68  docker-compose -f docker-compose1.yml stop
+   69  docker-compose -f docker-compose1.yml images
+   70  docker-compose images
+   71  docker-compose -f docker-compose1.yml images
+   72  docker-compose -f docker-compose1.yml up -d
+   73  '
+   74  ll
+   75  mv docker-compose1.yml docker-compose.yml
