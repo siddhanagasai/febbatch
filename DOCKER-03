@@ -1,0 +1,83 @@
+  1  yum install docker -y
+    2  systemctl start docker
+    3  systemctl status docker
+    4  vim Dockerfile
+    5  docker build -t raham:v1 .
+    6  docker images
+    7  docker run -it --name cont1 raham:v1 /bin/bash
+    8  docker ps -a
+    9  docker run -it --name cont2 --volumes-from cont1 --privileged=true ubuntu
+   10  docker ps -a
+   11  docker attach cont1
+   12  docker run -it --name cont3 -v /volume2 ubuntu
+   13  docker run -it --name cont4 --volumes-from cont3 --privileged=true ubuntu
+   14  docker images
+   15  docker ps -a
+   16  docker volume ls
+   17  docker volume create raham
+   18  docker volume ls
+   19  docker volume inspect raham
+   20  cd /var/lib/docker/volumes/raham/_data
+   21  ll
+   22  touch java{1..10}
+   23  ll
+   24  cd
+   25  docker run -it --name cont5 --mount source=raham,destination=/raham ubuntu
+   26  cd /var/lib/docker/volumes/raham/_data
+   27  ll
+   28  cd
+   29  docker volume ls
+   30  docker inspect 0bd5623c8a220acf8b7fdd5b4498b15d3feb69bc35e575a8f5bf61e295d3680b
+   31  cd /var/lib/docker/volumes/0bd5623c8a220acf8b7fdd5b4498b15d3feb69bc35e575a8f5bf61e295d3680b/_data
+   32  ll
+   33  cd
+   34  cd /home/ec2-user/
+   35  ll
+   36  ls -al
+   37  touch local{1..5}
+   38  ll
+   39  docker run -it --name cont6 -v /home/ec2-user=/xyz ubuntu
+   40  docker run -it --name cont7 -v /home/ec2-user:/xyz ubuntu
+   41  cd
+   42  docker volume ls
+   43  docker volume craete abc
+   44  docker volume create abc
+   45  docker volume create def
+   46  docker volume create ghi
+   47  docker volume ls
+   48  docker volume rm def
+   49  docker volume ls
+   50  docker volume prune
+   51  docker container prune
+   52  docker images prune
+   53  docker images
+   54  docker attach cont1
+   55  docker images
+   56  docker ps -a
+   57  docker volume ls
+   58  docker system df
+   59  docker system df -v
+   60  docker attach cont1
+   61  docker system df -v
+   62  docker commit cont1 raham:v2
+   63  docker system df -v
+   64  docker run -it --name cont8 raham:v2
+   65  docker system df -v
+   66  docker attach cont8
+   67  docker images
+   68  docker pull jenkins/jenkins:lts
+   69  docker images
+   70  docker run -it --name ciserver jenkins/jenkins -p 8080:8080
+   71  docker run -it --name ciserver jenkins/jenkins:lts -p 8080:8080
+   72  docker run -it --name ciserver1 jenkins/jenkins:lts -p 8080:8080
+   73  docker run -it --name ciserver1 -p 8080:8080 jenkins/jenkins:lts
+   74  docker ps -a
+   75  docker container prune
+   76  docker run -it --name ciserver1 -p 8080:8080 jenkins/jenkins:lts
+   77  docker ps -a
+   78  docker run -it --name cont9 ubuntu
+   79  docker run -it --name cont10 ubuntu
+   80  docker ps -a
+   81  docker container prune
+   82  docker search jenkins
+   83  history
