@@ -1,0 +1,82 @@
+ 1  docker swarm init --advertise-addr 172.31.38.45
+    2  docker node ls
+    3  docker images
+    4  vim Dockerfile
+    5  vim index.html
+    6  docker build -t raham:v1 .
+    7  docker ps -a
+    8  docker images
+    9  docker service create --name raham --replicas 3 --publish 80:80 raham:v1
+   10  docker ps -a
+   11  docker service create --name raham --replicas 3 --publish 80:80 nginx
+   12  docker service create --name raham --replicas 3 --publish 81:80 nginx
+   13  docker service ls
+   14  docker ps -a
+   15  docker service ls
+   16  docker service raham scale=10
+   17  docker service scale raham=10
+   18  docker ps -a
+   19  docker service ls
+   20  docker service rm hzp9n0obwvqm
+   21  docker service ls
+   22  docker ps -a
+   23  docker service ls
+   24  docker stop $(docker ps -a -1)
+   25  docker stop $(docker ps -a -q)
+   26  docker kill $(docker ps -a -q)
+   27  docker ps -a
+   28  docker service create --name swiggy --replicas 3 --publish 80:80 nginx
+   29  docker ps -a
+   30  docker stop 0159e80510a7
+   31  docker ps -a
+   32  docker kill f00859b9fc25
+   33  docker ps -a
+   34  docker ps
+   35  docker service ls
+   36  docker service scale swiggy=10
+   37  docker ps -a
+   38  docker ps
+   39  docker stop 001012580d0e
+   40  docker ps
+   41  docker service ls
+   42  docker service inspect swiggy
+   43  docker service inspect swiggy --output yaml
+   44  docker service inspect swiggy --output
+   45  docker service inspect swiggy --output text
+   46  docker service logs swiggy
+   47  docker ps -a
+   48  docker service ls
+   49  docker service ps swiggy
+   50  docker service ls
+   51  docker service create --name zomato --replicas 5 --publish 81:80 httpd
+   52  docker service ls
+   53  docker service rm zomato
+   54  docker ps
+   55  docker service rm swiggy
+   56  docker node ls
+   57  docker service create --name zomato --replicas 5 --publish 81:80 httpd
+   58  docker node ls
+   59  docker node rm u89rkpb23a6wu1l51b6d4nhsj
+   60  docker node ls
+   61  docker node rm w87djp4bsgu8o2ngxxmu2elbz
+   62  docker node rm 8qlu23c1ajiixqn4f1u0obto5
+   63  docker node ls
+   64  docker node rm uaayff3b8aqfvcdleegw3dx82
+   65  docker node rm uaayff3b8aqfvcdleegw3dx82 --force
+   66  docker node ls
+   67  docker swarm join-token manager
+   68  docker node ls
+   69  docker images
+   70  docker tag raham rahamshaik
+   71  /
+   72  docker tag raham rahamshaik/devopsbyraham
+   73  docker tag raham:v1 rahamshaik/devopsbyraham
+   74  docker images
+   75  docker push rahamshaik/devopsbyraham
+   76  docker login
+   77  docker push rahamshaik/devopsbyraham
+   78  docker images
+   79  docker rmi rahamshaik/devopsbyraham
+   80  docker images
+   81  docker pull rahamshaik/devopsbyraham:latest
+   82  docker images
