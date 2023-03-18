@@ -1,0 +1,153 @@
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install curl wget apt-transport-https -y
+sudo curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo mv minikube-linux-amd64 /usr/local/bin/minikube
+sudo chmod +x /usr/local/bin/minikube
+sudo minikube version
+sudo curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+sudo echo "$(cat kubectl.sha256) kubectl" | sha256sum --check
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+sudo minikube start --driver=docker --force
+
+============================================================================================================================================================================================
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  containers:
+  - name: cont1
+    image: nginx
+============================================================================================================================================================================================
+REPLICASET:
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    run: raham
+  name: ccit-rs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: raham
+  template:
+    metadata:
+      labels:
+        run: raham
+    spec:
+      containers:
+      - name: cont1
+        image: nginx
+============================================================================================================================================================================================
+DEPLOYMENT:
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: raham
+  name: ccit-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: raham
+  template:
+    metadata:
+      labels:
+        run: raham
+    spec:
+      containers:
+      - name: cont1
+        image: nginx
+ 
+ =========================================================================================================================================================================
+    1  vim minikube.sh
+    2  sh minikube.sh
+    3  kubectl get pod
+    4  kubectl run raham --image=nginx
+    5  kubectl get pod
+    6  kubectl get pod -o wide
+    7  kubectl describe pod raham
+    8  kubectl get pod
+    9  kubectl delete pod raham
+   10  kubectl get pod
+   11  kubectl run raham --image=httpd
+   12  kubectl delete pod raham
+   13  vim pod.yml
+   14  ll
+   15  mkdir k8s
+   16  mv pod.yml k8s/
+   17  cd k8s/
+   18  ll
+   19  kubectl create -f pod.yml
+   20  kubectl get po
+   21  kubectl describe pod raham
+   22  kubectl get po
+   23  kubectl delete po raham
+   24  kubectl get po
+   25  ll
+   26  vim pod.yml
+   27  ll
+   28  kubectl create -f pod.yml
+   29  kubectl get replicaset
+   30  kubectl get rs
+   31  kubectl get rs -o wide
+   32  kubectl describe rs ccit-rs
+   33  kubectl get po
+   34  kubectl delete pod ccit-rs-ft2mf
+   35  kubectl get po
+   36  kubectl delete pod ccit-rs-m52qq
+   37  kubectl get po
+   38  kubectl get pod
+   39  kubectl scale rs ccit-rs --replicas=5
+   40  kubectl get pod
+   41  kubectl scale rs ccit-rs --replicas=2
+   42  kubectl get pod
+   43  kubectl scale rs ccit-rs --replicas=5
+   44  kubectl get pod
+   45  kubectl get rs
+   46  kubectl get rs -o yaml
+   47  kubectl get po --show-labels
+   48  kubectl get rs
+   49  kubectl get pod
+   50  kubectl delete rs ccit-rs
+   51  kubectl get pod
+   52  vim pod.yml
+   53  ll
+   54  kubectl create -f pod.yml
+   55  kubectl get deployment
+   56  kubectl get deploy
+   57  kubectl get rs
+   58  kubectl get pods
+   59  kubectl scale ccit-deploy --replicas=5
+   60  kubectl scale deployment/ccit-deploy --replicas=5
+   61  kubectl get pods
+   62  kubectl delete pod ccit-deploy-7f49db7b7f-6hpsg
+   63  kubectl get pods
+   64  vim pod.yml
+   65  kubectl get deploy
+   66  kubectl describe deploy ccit-deploy
+   67  kubectl rollout status deployment/ccit-deploy
+   68  kubectl describe deploy ccit-deploy
+   69  kubectl set image deployment/ccit-deploy nginx=nginx:1.16.1
+   70  vim pod.yml
+   71  kubectl set image deployment/ccit-deploy nginx=nginx:1.16.1
+   72  cat pod.yml
+   73  kubectl set image deployment/ccit-deploy cont1=nginx:1.16.1
+   74  kubectl describe deploy ccit-deploy
+   75  kubectl set image deployment/ccit-deploy cont1=nginx:1.14.1
+   76  kubectl describe deploy ccit-deploy
+   77  kubectl get po
+   78  kubectl describe pod ccit-deploy-754bc8dd74-mg26n
+   79  kubectl get po
+   80  kubectl describe pod ccit-deploy-754bc8dd74-r44jg
+   81  history
+
+======================================================================================================
+
