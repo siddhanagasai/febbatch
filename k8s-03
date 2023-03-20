@@ -1,0 +1,129 @@
+
+K8SC
+KOPS:
+kOps, also known as Kubernetes operations, is an open-source tool which helps you create, destroy, upgrade, and maintain a highly available, production-grade Kubernetes cluster. Depending on the requirement, kOps can also provision cloud infrastructure.
+kOps is mostly used in deploying AWS and GCE Kubernetes clusters. But officially, the tool only supports AWS. Support for other cloud providers (such as DigitalOcean, GCP, and OpenStack) are in the beta stage
+
+ADVANTAGES:
+•	Automates the provisioning of AWS and GCE Kubernetes clusters
+•	Deploys highly available Kubernetes masters
+•	Supports rolling cluster updates
+•	Autocompletion of command in the command line
+•	Generates Terraform and CloudFormation configurations
+•	Manages cluster add-ons.
+•	Supports state-sync model for dry-runs and automatic idempotency
+•	Creates instance groups to support heterogeneous clusters
+
+
+STEP-1: LAUNCH INSTANCE WITH T2.MEDIUM AND 30 GB SSD
+
+STEP-2: INSTALL AWS CLI
+		curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+		unzip awscliv2.zip
+		sudo ./aws/install
+
+STEP-3: INSTALL KOPS & KUBECTL
+		curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+		wget https://github.com/kubernetes/kops/releases/download/v1.24.1/kops-linux-amd64
+		PERMISSIONS: chmod +x kops-linux-amd64 kubectl
+		MOVE FILES:  mv kubectl /usr/local/bin/kubectl
+		MOVE FILES:  mv kops-linux-amd64  /usr/local/bin/kops
+		TO SEE VERSION: kubectl version & kops version
+
+TO  CHECK VERSION: /usr/local/bin/aws --version
+		TO SET PATH: vim .bashrc
+				 export PATH=$PATH:/usr/local/bin/
+				 source .bashrc
+				 aws --version
+
+STEP-4: CREATE IAM USER WITH ADMIN PERMISSIONS AND CONFIGURE IT IN ANY REGION WITH TABLE FORMAT
+        aws configure
+
+STEP-5: CREATE INFRA SETUP
+		TO CREATE BUCKET: aws s3api create-bucket --bucket rahams.k8s.local --region us-east-1
+		TO ENABLE VERSION: aws s3api put-bucket-versioning --bucket rahams.k8s.local --region us-east-1 --versioning-configuration Status=Enabled
+		EXPORT CLUSTER DATA INTO BUCKET: export KOPS_STATE_STORE=s3://rahams.k8s.local
+		
+		TO CREATE CLUSTER: kops create cluster --name rahams.k8s.local --zones us-east-1a --master-size t2.medium --node-size t2.micro
+		TO SEE THE CLUSTER: kops get cluster
+		IF YOU WANT TO EDIT THE CLUSTER: kops edit cluster cluster_name
+		TO RUN THE CLUSTER: kops update cluster --name rahams.k8s.local --yes --admin
+STEP-6: CREATE PODS
+		TO CREATE A POD: kops update cluster --name bhagi.k8s.local --yes --admin
+		TO CHECK THE PODS: kubectl get pods
+========================================================================================================================================================================
+
+history:
+
+ 1  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    2  unzip awscliv2.zip
+    3  sudo ./aws/install
+    4  vim abc.sh
+    5  sh abc.sh
+    6  ll
+    7  ls /usr/local/bin/
+    8  kops version
+    9  kubectl version
+   10  vim .bashrc
+   11  source .bashrc
+   12  kops version
+   13  kubectl version
+   14  aws configure
+   15  aws s3api create-bucket --bucket rahams.k8s.local --region us-east-1
+   16  aws s3api create-bucket --bucket rahamshaik007.k8s.local --region us-east-1
+   17  aws s3api put-bucket-versioning --bucket rahamshaik007.k8s.local --region us-east-1 --versioning-configuration Status=Enabled
+   18  export KOPS_STATE_STORE=s3://rahamshaik007.k8s.local
+   19  kops create cluster --name rahamshaik007.k8s.local --zones us-east-1a --master-size t2.medium --node-size t2.micro
+   20  kops get cluster
+   21  kops edit cluster rahamshaik007.k8s.local
+   22  kops edit ig --name=rahamshaik007.k8s.local nodes-us-east-1a
+   23  kops update cluster --name rahamshaik007.k8s.local --yes --admin
+   24   kops validate cluster --wait 10m
+   25  kops edit ig --name=rahamshaik007.k8s.local nodes-us-east-1a
+   26  kops update cluster --name rahamshaik007.k8s.local --yes --admin
+   27   kops rolling-update cluster
+   28  kops get cluster
+   29  kubectl get no
+   30  kubectl get po
+   31  kubectl get ns
+   32  kubectl run raham1 --image=nginx
+   33  kubectl describe pod raham1
+   34  default           Active   6m55s
+   35  kube-node-lease   Active   6m56s
+   36  kube-public       Active   6m56s
+   37  kube-system       Active   6m56s
+   38  kubectl describe pod raham1
+   39  kubectl get ns
+   40  kubectl get all
+   41  kubectl get all -A
+   42  kubectl get ns
+   43  kubectl create ns frontend
+   44  kubectl get ns
+   45  kubectl describe ns frontend
+   46  kubectl config set-context $(kubectl config current-context) --namespace=frontend
+   47  kubectl get po
+   48  kubectl config set-context $(kubectl config current-context) --namespace=default
+   49  kubectl get po
+   50  kubectl config set-context $(kubectl config current-context) --namespace=frontend
+   51  kubectl get po
+   52  kubectl get po -n default
+   53  kubectl delete pod raham1
+   54  kubectl run fepods --image=httpd
+   55  kubectl run fepods1 --image=httpd
+   56  kubectl run fepods2 --image=httpd
+   57  kubectl run fepods3 --image=httpd
+   58  kubectl get ns
+   59  kubectl get ns -o wide
+   60  kubectl get po
+   61  kubectl get po -o wide
+   62  kubectl run fepods4 --image=httpd
+   63  kubectl get po -o wide
+   64  kubectl describe pod fepods
+   65  kubectl get po -o wide
+   66  kubectl logs fepods
+   67  kubectl config set-context $(kubectl config current-context) --namespace=default
+   68  kubectl get po
+   69  kubectl top nodes
+   70  kops get cluster
+   71  kops delete cluster --name rahamshaik007.k8s.local --yes
+   72  history
